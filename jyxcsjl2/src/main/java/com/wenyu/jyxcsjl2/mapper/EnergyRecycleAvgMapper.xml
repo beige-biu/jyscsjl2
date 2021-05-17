@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wenyu.jyxcsjl2.mapper.EnergyRecycleAvgMapper">
+  <resultMap id="BaseResultMap" type="com.wenyu.jyxcsjl2.model.EnergyRecycleAvg">
+    <id column="RECORD_DATE" jdbcType="TIMESTAMP" property="recordDate" />
+    <result column="PLCYRHSAI_400001F" jdbcType="VARCHAR" property="plcyrhsai400001f" />
+    <result column="PLCYRHSAI_400003F" jdbcType="VARCHAR" property="plcyrhsai400003f" />
+    <result column="PLCYRHSAI_400007F" jdbcType="VARCHAR" property="plcyrhsai400007f" />
+    <result column="PLCYRHSAI_400011F" jdbcType="VARCHAR" property="plcyrhsai400011f" />
+    <result column="PLCYRHSAI_400005F" jdbcType="VARCHAR" property="plcyrhsai400005f" />
+    <result column="PLCYRHSAI_400009F" jdbcType="VARCHAR" property="plcyrhsai400009f" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RECORD_DATE, PLCYRHSAI_400001F, PLCYRHSAI_400003F, PLCYRHSAI_400007F, PLCYRHSAI_400011F, 
+    PLCYRHSAI_400005F, PLCYRHSAI_400009F
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.util.Date" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_energy_recycle_avg
+    where RECORD_DATE = #{recordDate,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from t_energy_recycle_avg order by RECORD_DATE desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Date">
+    delete from t_energy_recycle_avg
+    where RECORD_DATE = #{recordDate,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.wenyu.jyxcsjl2.model.EnergyRecycleAvg">
+    insert into t_energy_recycle_avg (RECORD_DATE, PLCYRHSAI_400001F, PLCYRHSAI_400003F, 
+      PLCYRHSAI_400007F, PLCYRHSAI_400011F, PLCYRHSAI_400005F, 
+      PLCYRHSAI_400009F)
+    values (#{recordDate,jdbcType=TIMESTAMP}, #{plcyrhsai400001f,jdbcType=VARCHAR}, #{plcyrhsai400003f,jdbcType=VARCHAR}, 
+      #{plcyrhsai400007f,jdbcType=VARCHAR}, #{plcyrhsai400011f,jdbcType=VARCHAR}, #{plcyrhsai400005f,jdbcType=VARCHAR}, 
+      #{plcyrhsai400009f,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wenyu.jyxcsjl2.model.EnergyRecycleAvg">
+    insert into t_energy_recycle_avg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordDate != null">
+        RECORD_DATE,
+      </if>
+      <if test="plcyrhsai400001f != null">
+        PLCYRHSAI_400001F,
+      </if>
+      <if test="plcyrhsai400003f != null">
+        PLCYRHSAI_400003F,
+      </if>
+      <if test="plcyrhsai400007f != null">
+        PLCYRHSAI_400007F,
+      </if>
+      <if test="plcyrhsai400011f != null">
+        PLCYRHSAI_400011F,
+      </if>
+      <if test="plcyrhsai400005f != null">
+        PLCYRHSAI_400005F,
+      </if>
+      <if test="plcyrhsai400009f != null">
+        PLCYRHSAI_400009F,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordDate != null">
+        #{recordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plcyrhsai400001f != null">
+        #{plcyrhsai400001f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400003f != null">
+        #{plcyrhsai400003f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400007f != null">
+        #{plcyrhsai400007f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400011f != null">
+        #{plcyrhsai400011f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400005f != null">
+        #{plcyrhsai400005f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400009f != null">
+        #{plcyrhsai400009f,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wenyu.jyxcsjl2.model.EnergyRecycleAvg">
+    update t_energy_recycle_avg
+    <set>
+      <if test="plcyrhsai400001f != null">
+        PLCYRHSAI_400001F = #{plcyrhsai400001f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400003f != null">
+        PLCYRHSAI_400003F = #{plcyrhsai400003f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400007f != null">
+        PLCYRHSAI_400007F = #{plcyrhsai400007f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400011f != null">
+        PLCYRHSAI_400011F = #{plcyrhsai400011f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400005f != null">
+        PLCYRHSAI_400005F = #{plcyrhsai400005f,jdbcType=VARCHAR},
+      </if>
+      <if test="plcyrhsai400009f != null">
+        PLCYRHSAI_400009F = #{plcyrhsai400009f,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RECORD_DATE = #{recordDate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wenyu.jyxcsjl2.model.EnergyRecycleAvg">
+    update t_energy_recycle_avg
+    set PLCYRHSAI_400001F = #{plcyrhsai400001f,jdbcType=VARCHAR},
+      PLCYRHSAI_400003F = #{plcyrhsai400003f,jdbcType=VARCHAR},
+      PLCYRHSAI_400007F = #{plcyrhsai400007f,jdbcType=VARCHAR},
+      PLCYRHSAI_400011F = #{plcyrhsai400011f,jdbcType=VARCHAR},
+      PLCYRHSAI_400005F = #{plcyrhsai400005f,jdbcType=VARCHAR},
+      PLCYRHSAI_400009F = #{plcyrhsai400009f,jdbcType=VARCHAR}
+    where RECORD_DATE = #{recordDate,jdbcType=TIMESTAMP}
+  </update>
+</mapper>
